@@ -1,5 +1,11 @@
 import pygame
 
+UWU = [
+    (1, 6), (1, 7), (1, 8), (2, 8), (3, 6), (3, 7), (3, 8),
+    (5, 6), (5, 7), (5, 8), (6, 8), (7, 6), (7, 7), (7, 8), (8, 8), (9, 6), (9, 7), (9, 8),
+    (11, 6), (11, 7), (11, 8), (12, 8), (13, 6), (13, 7), (13, 8)
+]
+
 
 class Board:
     # создание поля
@@ -7,6 +13,10 @@ class Board:
         self.width = width
         self.height = height
         self.board = [[0] * width for _ in range(height)]
+        for y in range(len(self.board)):
+            for x in range(len(self.board[y])):
+                if (y, x) in UWU:
+                    self.board[x][y] = 1
         # значения по умолчанию
         self.left = 10
         self.top = 10
@@ -19,7 +29,7 @@ class Board:
         self.cell_size = cell_size
 
     def render(self, screen):
-        col = ['green', 'black']
+        col = ['pink', 'white']
         for j in range(self.width):
             for i in range(self.height):
                 pygame.draw.rect(screen, pygame.Color(col[self.board[i][j]]),
@@ -45,24 +55,11 @@ class Board:
         self.on_click(cell)
 
 
-def draw(screen):
-    screen.fill((0, 0, 0))
-    font = pygame.font.Font(None, 50)
-    text = font.render("Hello, Pygame!", True, (100, 255, 100))
-    text_x = width // 2 - text.get_width() // 2
-    text_y = height // 2 - text.get_height() // 2
-    text_w = text.get_width()
-    text_h = text.get_height()
-    screen.blit(text, (text_x, text_y))
-    pygame.draw.rect(screen, (0, 255, 0), (text_x - 10, text_y - 10,
-                                           text_w + 20, text_h + 20), 1)
-
-
 if __name__ == '__main__':
     pygame.init()
-    size = width, height = 800, 400
+    size = width, height = 500, 500
     screen = pygame.display.set_mode(size)
-    board = Board(10, 10)
+    board = Board(15, 15)
     running = True
     fps = 50  # количество кадров в секунду
     clock = pygame.time.Clock()
