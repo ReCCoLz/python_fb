@@ -3,7 +3,6 @@ import random
 
 from objects import Grumpy, Pipe, Base, Score
 
-# Setup *******************************************
 
 pygame.init()
 SCREEN = WIDTH, HEIGHT = 288, 512
@@ -18,17 +17,13 @@ if width >= height:
 else:
 	win = pygame.display.set_mode(SCREEN, pygame.NOFRAME | pygame.SCALED | pygame.FULLSCREEN)
 
-# win = pygame.display.set_mode(SCREEN, pygame.SCALED | pygame.FULLSCREEN)
+
 clock = pygame.time.Clock()
 FPS = 60
-
-# COLORS
 
 RED = (255, 0, 0)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-
-# Backgrounds
 
 bg1 = pygame.image.load('Assets/background-day.png')
 bg2 = pygame.image.load('Assets/background-night.png')
@@ -42,8 +37,6 @@ gameover_img =  pygame.image.load('Assets/gameover.png')
 flappybird_img =  pygame.image.load('Assets/flappybird.png')
 flappybird_img = pygame.transform.scale(flappybird_img, (200,80))
 
-# Sounds & fx
-
 
 die_fx = pygame.mixer.Sound('Sounds/die.wav')
 hit_fx = pygame.mixer.Sound('Sounds/hit.wav')
@@ -51,14 +44,13 @@ point_fx = pygame.mixer.Sound('Sounds/point.wav')
 swoosh_fx = pygame.mixer.Sound('Sounds/swoosh.wav')
 wing_fx = pygame.mixer.Sound('Sounds/wing.wav')
 
-# Objects
 
 pipe_group = pygame.sprite.Group()
 base = Base(win)
 score_img = Score(WIDTH // 2, 50, win)
 grumpy = Grumpy(win)
 
-# Variables
+
 
 base_height = 0.80 * HEIGHT
 speed = 0
