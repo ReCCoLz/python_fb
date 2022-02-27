@@ -44,9 +44,6 @@ class Grumpy:
 			if self.rect.bottom <= display_height:
 				self.theta -= 2
 			self.image = pygame.transform.rotate(self.im_list[self.index], self.theta)
-			
-	#	if not alive:
-	#		self.image = self.im_list[1]
 		
 		self.win.blit(self.image, self.rect)
 		
